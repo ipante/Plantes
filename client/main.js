@@ -1,14 +1,22 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+// importation de la base de données
+import { Plantes } from '../imports/api/plantes.js';
 
 import './main.html';
 
 Template.liste_plantes.helpers({
-  plantes: [
-    { nom : 'Polyana', frequence : 3, dernier_arrosage : 'Tue Jun 06 2017 11:19:20 GMT+0200 (CEST)' },
-    { nom : 'Polyana', frequence : 3, dernier_arrosage : 'Tue Jun 06 2017 11:19:20 GMT+0200 (CEST)' },
-    { nom : 'Polyana', frequence : 3, dernier_arrosage : 'Tue Jun 06 2017 11:19:20 GMT+0200 (CEST)' },
-  ],
+  // récupération de la base de données
+  plantes() {
+    return Plantes.find({});
+  },
+});
+
+Template.liste_plantes.events({
+  'click #bouton_ajout'() {
+    // encodage brut : à améliorer
+    Plantes.insert({ nom : "Polyana", frequence : 3, dernier_arrosage : new Date() });
+  }
 });
 
 Template.plante.helpers({
@@ -20,5 +28,14 @@ Template.plante.helpers({
     if(ecart_jours == this.frequence){return "list-group-item-warning"}
     //else if(ecart_jours > this.frequence){return "list-group-item-danger"})
     else{return "list-group-item-success"}
+  }
+});
+
+Template.plante.events({
+  'click .glyphicon-tint'(){
+    console.log(1);
+  },
+  'click .specimen'(){
+    console.log(2);
   }
 });
