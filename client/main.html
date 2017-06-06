@@ -1,0 +1,20 @@
+<head>
+  <title>Inventaire de plantes</title>
+</head>
+
+<body>
+  <h1>ARROSAGE</h1>
+  {{> liste_plantes}}
+</body>
+
+<template name="liste_plantes">
+  <ul class="list-group">
+    {{#each plantes}}
+      {{> plante}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="plante">
+  <li class="list-group-item {{ statut }}">{{ nom }}</li>
+</template>
