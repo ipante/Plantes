@@ -25,6 +25,7 @@ Template.plante.helpers({
     let dernier_arrosage = new Date(this.dernier_arrosage);
     let ecart_brut = Math.abs(maintenant.getTime() - dernier_arrosage.getTime());
     let ecart_jours = Math.ceil(ecart_brut / (1000 * 3600 * 24));
+    console.log(ecart_jours);
     if(ecart_jours == this.frequence){return "list-group-item-warning"}
     //else if(ecart_jours > this.frequence){return "list-group-item-danger"})
     else{return "list-group-item-success"}
