@@ -40,3 +40,19 @@ Template.plante.events({
     console.log(2);
   }
 });
+
+/* Schéma d'une plante :: en attente
+const Schemas = {};
+Schemas.plante = new SimpleSchema({
+  nom: {
+    type: String,
+    label: "Nom",
+    max: 200
+  },
+  frequence: {
+    type: Number,
+    label: "Fréquence d'arrosage (jours)",
+    min: 1
+  }
+});
+*/
