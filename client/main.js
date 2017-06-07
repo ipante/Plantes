@@ -33,10 +33,12 @@ Template.plante.helpers({
 });
 
 Template.plante.events({
-  'click .glyphicon-tint'(){
+  'click .glyphicon-tint'(event){
+    event.stopPropagation();
     console.log(1);
   },
-  'click .specimen'(){
+  'click .specimen'(event){
+    event.stopPropagation();
     console.log(2);
   }
 });
