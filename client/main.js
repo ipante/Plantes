@@ -27,7 +27,7 @@ Template.plante.helpers({
     let ecart_jours = Math.ceil(ecart_brut / (1000 * 3600 * 24));
     console.log(ecart_jours);
     if(ecart_jours == this.frequence){return "list-group-item-warning"}
-    //else if(ecart_jours > this.frequence){return "list-group-item-danger"})
+    else if(ecart_jours > this.frequence){return "list-group-item-danger"}
     else{return "list-group-item-success"}
   }
 });
@@ -35,11 +35,12 @@ Template.plante.helpers({
 Template.plante.events({
   'click .glyphicon-tint'(event){
     event.stopPropagation();
-    console.log(1);
+    // mettre à jour la date d'arrosage
+    // attention, il faut $set pour ne changer "que" cette propriété
+    Plantes.update({ _id : this._id },{ $set : { dernier_arrosage : new Date()}});
   },
   'click .specimen'(event){
     event.stopPropagation();
-    console.log(2);
   }
 });
 
